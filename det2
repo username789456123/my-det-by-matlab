@@ -1,0 +1,22 @@
+function d = det2(A)
+    [m,n] = size(A);
+    %%判断是否为方阵
+    if m~=n
+        error('这不是方阵！')
+    else
+    %%把行列式转化为三角形
+    for i = 1:n-1
+        for j = i+1:n
+            k = A(j,i)/A(i,i);
+            A(j,:) = A(j,:) - k * A(i,:);
+        end
+    end
+     %%计算结果
+     b = diag(A);
+     d = 1;
+         for i = 1: m
+         d = d * b(i,:);
+         end
+     end
+end
+   
